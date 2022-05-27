@@ -1,0 +1,13 @@
+
+System info for <tintin>
+Architecture: Linux tintin 5.10.0-0.bpo.5-amd64 #1 SMP Debian 5.10.24-1~bpo10+1 (2021-03-29) x86_64 GNU/Linux
+Endian format             : little endian
+FORTRAN control word size : 4 bytes
+FORTRAN integer size      : 4 bytes
+FORTRAN real    size      : 4 bytes
+C       int     size      : 4 bytes
+C       float   size      : 4 bytes
+C       long    size      : 8 bytes
+C  long long    size      : 8 bytes
+FORTRAN Compiler: gfortran
+C       Compiler: gcc

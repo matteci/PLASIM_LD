@@ -1,0 +1,855 @@
+******************************************************
+*                  PLANET SIMULATOR                  *
+* https://github.com/Edilbert/PLASIM/ : 15-Dec-2015  *
+******************************************************
+* Truncation   NTRU :   21                           *
+* Levels       NLEV :   10                           *
+* Latitudes    NLAT :   32                           *
+* Longitudes   NLON :   64                           *
+******************************************************
+
+****************************************
+* planet_nl from    <planet_namelist > *
+****************************************
+&PLANET_NL
+ NFIXORB=0          ,
+ ECCEN=  1.66999996E-02,
+ MVELP=  102.699997    ,
+ OBLIQ=  23.4400005    ,
+ ROTSPD=  1.00000000    ,
+ SIDEREAL_DAY=  86164.0938    ,
+ SOLAR_DAY=  86400.0000    ,
+ SIDEREAL_YEAR=  31558148.0    ,
+ TROPICAL_YEAR=  31556956.0    ,
+ AKAP= 0.286000013    ,
+ ALR=  6.50000013E-03,
+ GASCON=  287.000000    ,
+ RA1=  610.780029    ,
+ RA2=  17.2693882    ,
+ RA4=  35.8600006    ,
+ PNU= 0.100000001    ,
+ GA=  9.80665016    ,
+ PLARAD=  6371220.00    ,
+ GSOL0=  1367.00000    ,
+ YPLANET="Earth                                                                           ",
+ /
+
+
+**************************************************
+*              Simulating: Earth                 *
+**************************************************
+*                Parameter       Units     Value *
+**************************************************
+*                     Mass  [10^24 kg]    5.9736 *
+*                   Volume [10^10 km3]  108.3210 *
+*        Equatorial radius        [km] 6378.0000 *
+*             Polar radius        [km] 6356.0000 *
+*              Mean radius        [km] 6371.2202 *
+*              Ellipticity                0.0034 *
+*             Mean density     [kg/m3] 5520.0000 *
+*          Surface gravity      [m/s2]    9.8067 *
+*              Bond albedo                0.3850 *
+*         Solar irradiance      [W/m2] 1367.0000 *
+*   Black-body temperature         [K]  247.3000 *
+*    Sidereal orbit period      [days]  366.2564 *
+* Sidereal rotation period         [h]   23.9345 *
+*               Perihelion   [10^6 km]  147.1000 *
+*                 Aphelion   [10^6 km]  152.1000 *
+*       Using Berger orbit   nfixorb=0           *
+*          Rotation factor                1.0000 *
+*             Gas constant              287.0000 *
+**************************************************
+
+
+Found  138 variables in file <plasim_restart>
+
+   1 : nstep           
+   2 : naccuout        
+   3 : nlat            
+   4 : nlon            
+   5 : nlev            
+   6 : nrsp            
+   7 : seed            
+   8 : sz              
+   9 : sd              
+  10 : st              
+  11 : sq              
+  12 : sr              
+  13 : sp              
+  14 : so              
+  15 : szm             
+  16 : sdm             
+  17 : stm             
+  18 : sqm             
+  19 : spm             
+  20 : dls             
+  21 : drhs            
+  22 : dalb            
+  23 : dz0             
+  24 : dicec           
+  25 : diced           
+  26 : dwatc           
+  27 : drunoff         
+  28 : dforest         
+  29 : dust3           
+  30 : dcc             
+  31 : dql             
+  32 : dqsat           
+  33 : dt              
+  34 : dq              
+  35 : aprl            
+  36 : aprc            
+  37 : aprs            
+  38 : aevap           
+  39 : ashfl           
+  40 : alhfl           
+  41 : aroff           
+  42 : asmelt          
+  43 : asndch          
+  44 : acc             
+  45 : assol           
+  46 : asthr           
+  47 : atsol           
+  48 : atthr           
+  49 : ataux           
+  50 : atauy           
+  51 : atsolu          
+  52 : assolu          
+  53 : asthru          
+  54 : aqvi            
+  55 : atsa            
+  56 : ats0            
+  57 : atsama          
+  58 : atsami          
+  59 : nlsoil          
+  60 : dtsl            
+  61 : dtsm            
+  62 : dqs             
+  63 : driver          
+  64 : duroff          
+  65 : dvroff          
+  66 : darea           
+  67 : dwmax           
+  68 : dtcl            
+  69 : dwcl            
+  70 : dsnowt          
+  71 : dsnowz          
+  72 : dsoilt          
+  73 : dglac           
+  74 : dz0clim         
+  75 : dz0climo        
+  76 : dalbcl          
+  77 : naccuice        
+  78 : naccuo          
+  79 : nicec2d         
+  80 : xls             
+  81 : xts             
+  82 : xicec           
+  83 : xiced           
+  84 : xsnow           
+  85 : xclicec         
+  86 : xcliced         
+  87 : xclsst          
+  88 : cheat           
+  89 : cpme            
+  90 : croff           
+  91 : ctaux           
+  92 : ctauy           
+  93 : cust3           
+  94 : csnow           
+  95 : xflxicea        
+  96 : xheata          
+  97 : xofluxa         
+  98 : xqmelta         
+  99 : xcfluxa         
+ 100 : xcfluxra        
+ 101 : xcfluxna        
+ 102 : xsmelta         
+ 103 : ximelta         
+ 104 : xtsfluxa        
+ 105 : xfluxca         
+ 106 : xscflxa         
+ 107 : xcpmea          
+ 108 : xcroffa         
+ 109 : xstoia          
+ 110 : xicecc          
+ 111 : nlev_oce        
+ 112 : naccuoce        
+ 113 : yls             
+ 114 : ysst            
+ 115 : yiflux          
+ 116 : yclsst          
+ 117 : yheata          
+ 118 : yfssta          
+ 119 : yifluxa         
+ 120 : ydssta          
+ 121 : yfldoa          
+ 122 : yqhda           
+ 123 : yfldo           
+ 124 : naccua          
+ 125 : dts             
+ 126 : cheata          
+ 127 : cpmea           
+ 128 : cprsa           
+ 129 : croffa          
+ 130 : ctauxa          
+ 131 : ctauya          
+ 132 : cust3a          
+ 133 : cshfla          
+ 134 : cshdta          
+ 135 : clhfla          
+ 136 : clhdta          
+ 137 : cswfla          
+ 138 : clwfla          
+
+****************************************
+* plasim_nl from    <plasim_namelist > *
+****************************************
+&PLASIM_NL
+ KICK=1          ,
+ MPSTEP=45         ,
+ NADV=1          ,
+ NAQUA=0          ,
+ NCOEFF=0          ,
+ NDEL= 10*2          ,
+ NDHEAT=1          ,
+ NDIAG=320        ,
+ NDIAGCF=0          ,
+ NDIAGGP=0          ,
+ NDIAGGP2D=0          ,
+ NDIAGGP3D=0          ,
+ NDIAGSP=0          ,
+ NDIAGSP2D=0          ,
+ NDIAGSP3D=0          ,
+ NDL= 10*0          ,
+ NENTROPY=0          ,
+ NENTRO3D=0          ,
+ NEQSIG=0          ,
+ NFLUX=1          ,
+ NGUI=0          ,
+ NGUIDBG=0          ,
+ NHDIFF=15         ,
+ NHORDIF=1          ,
+ NKITS=0          ,
+ NOUTPUT=1          ,
+ NPACKGP=0          ,
+ NPACKSP=0          ,
+ NPERPETUAL=0          ,
+ NPRHOR=0          ,
+ NPRINT=0          ,
+ NQSPEC=1          ,
+ NRAD=1          ,
+ NSELA=0          ,
+ NSYNC=1          ,
+ NTIME=0          ,
+ NTSPD=32         ,
+ NVEG=0          ,
+ NWPD=1          ,
+ N_START_YEAR=1          ,
+ N_START_MONTH=1          ,
+ N_RUN_STEPS=0          ,
+ N_RUN_YEARS=1          ,
+ N_RUN_MONTHS=0          ,
+ N_RUN_DAYS=0          ,
+ N_DAYS_PER_MONTH=30         ,
+ N_DAYS_PER_YEAR=360        ,
+ SEED= 8*0          ,
+ SELLON=1          ,
+ SYNCSTR=  0.00000000    ,
+ SYNCTIME=  0.00000000    ,
+ DTEP=  0.00000000    ,
+ DTNS=  0.00000000    ,
+ DTROP=  12000.0000    ,
+ DTTRP=  2.00000000    ,
+ TDISSD= 10*0.200000003     ,
+ TDISSZ= 10*1.10000002      ,
+ TDISST= 10*5.59999990      ,
+ TDISSQ= 10*0.100000001     ,
+ TGR=  288.000000    ,
+ PSURF=  101100.000    ,
+ RESTIM= 10*0.00000000      ,
+ T0= 10*250.000000      ,
+ TFRC=  1728000.00    ,  8640000.00    , 8*0.00000000      ,
+ SIGH= 10*0.00000000      ,
+ NENERGY=0          ,
+ NENER3D=0          ,
+ NSPONGE=0          ,
+ DAMPSP=  0.00000000    ,
+ KICKRESTART=0          ,
+ EPSRESTART=  9.99999975E-05,
+ /
+ ***************************
+ * Calmod initialization   *
+ ***************************
+ * Days per year:      360 *
+ * Days per month:      30 *
+ * Start step:           0 *
+ * Timesteps per day:   32 *
+ ***************************
+
+**********************************
+* Solar    day     : 86400.0 [s] *
+* Sidereal day     : 86164.1 [s] *
+* Omega            : 72.92 [s-6] *
+* Rotation Speed   :     1.0     *
+* Days / Year      :   360       *
+* Days / Month     :    30       *
+* Timestep         :    45 [min] *
+* Timesteps / day  :    32       *
+* Simulation time:     one year  *
+**********************************
+ old maxval(tdissd) =   0.200000003    
+ assuming [days] - converting to [sec]
+ new maxval(tdissd) =    17280.0000    
+ old maxval(tdissz) =    1.10000002    
+ assuming [days] - converting to [sec]
+ new maxval(tdissz) =    95040.0000    
+ old maxval(tdisst) =    5.59999990    
+ assuming [days] - converting to [sec]
+ new maxval(tdisst) =    483840.000    
+ old maxval(tdissq) =   0.100000001    
+ assuming [days] - converting to [sec]
+ new maxval(tdissq) =    8640.00000    
+
+ *************************************************
+ * Lateral dissipation             NDEL( 10) = 2 *
+ * Diffusion coefficient =     0.2337E+07 [m**2] *
+ * e-folding time for smallest scale =  5.6 days *
+ *************************************************
+
+ *********************************
+ * Lv *    Sigma Basic-T  Height *
+ *********************************
+ *  1 *    0.038   0.332  26.114 *
+ *  2 *    0.119   0.332  15.730 *
+ *  3 *    0.211   0.332  11.457 *
+ *  4 *    0.317   0.332   8.449 *
+ *  5 *    0.437   0.332   6.086 *
+ *  6 *    0.567   0.332   4.171 *
+ *  7 *    0.699   0.332   2.627 *
+ *  8 *    0.823   0.332   1.428 *
+ *  9 *    0.924   0.332   0.580 *
+ * 10 *    0.983   0.332   0.124 *
+ *********************************
+
+ ka:           0           0           0           0 -1257429428       22082           0           0           0           0           0           4           0           0           4           0           0           0           0           0           0           0 -1159549936       22082           0           0          33           0 -1159548768       22082 -1159563008       22082         144
+ n:          33
+ yn:seed
+ nresnum:         138
+ j           1
+ yresnam:nstep           
+ j           2
+ yresnam:naccuout        
+ j           3
+ yresnam:nlat            
+ j           4
+ yresnam:nlon            
+ j           5
+ yresnam:nlev            
+ j           6
+ yresnam:nrsp            
+ j           7
+ yresnam:seed            
+ dentro loop
+ tmp F
+
+ ***********************************************
+ * MISCMOD                 03.03.2003 by Larry *
+ ***********************************************
+ * Namelist MISCMOD_NL from <miscmod_namelist> *
+ ***********************************************
+&MISCMOD_NL
+ NFIXER=1          ,
+ NUDGE=0          ,
+ TNUDGET=  10.0000000    ,
+ /
+
+ ***********************************************
+ * FLUXMOD                 22.11.2002 by Larry *
+ ***********************************************
+ * Namelist FLUXMOD_NL from <fluxmod_namelist> *
+ ***********************************************
+&FLUXMOD_NL
+ NVDIFF=1          ,
+ NSHFL=1          ,
+ NEVAP=1          ,
+ NSTRESS=1          ,
+ NTSA=2          ,
+ ZUMIN=  1.00000000    ,
+ VDIFF_LAMM=  160.000000    ,
+ VDIFF_B=  5.00000000    ,
+ VDIFF_C=  5.00000000    ,
+ VDIFF_D=  5.00000000    ,
+ /
+
+ *********************************************
+ * RADMOD                27.09.2006 by Larry *
+ *********************************************
+ * Namelist RADMOD_NL from <radmod_namelist> *
+ *********************************************
+&RADMOD_NL
+ NDCYCLE=0          ,
+ NCSTSOL=0          ,
+ SOLCLAT=  1.00000000    ,
+ SOLCDEC=  1.00000000    ,
+ NO3=1          ,
+ CO2=  354.000000    ,
+ IYRBP=1949       ,
+ NSWR=1          ,
+ NLWR=1          ,
+ A0O3= 0.250000000    ,
+ A1O3= 0.109999999    ,
+ ACO3=  7.99999982E-02,
+ BO3=  20000.0000    ,
+ CO3=  5000.00000    ,
+ TOFFO3=  90.0000000    ,
+ O3SCALE=  1.00000000    ,
+ NSOL=1          ,
+ NSWRCL=1          ,
+ NRSCAT=1          ,
+ RCL1= 0.150000006    , 0.300000012    , 0.600000024    ,
+ RCL2= 0.150000006    , 0.300000012    , 0.600000024    ,
+ ACL2=  5.00000007E-02, 0.100000001    , 0.200000003    ,
+ CLGRAY= -1.00000000    ,
+ TPOFMT=  1.00000000    ,
+ ACLLWR= 0.100000001    ,
+ TSWR1=  7.69999996E-02,
+ TSWR2=  6.49999976E-02,
+ TSWR3=  5.49999997E-03,
+ TH2OC=  2.40000002E-02,
+ DAWN=  0.00000000    ,
+ /
+
+ *****************************************
+ *     Computed Orbital Parameters       *
+ *****************************************
+ * Year AD           =                 1 *
+ * Eccentricity      =          0.017465 *
+ * Obliquity (deg)   =         23.695250 *
+ * Obliquity (rad)   =          0.413560 *
+ * Long of perh(deg) =         68.836624 *
+ * Long of perh(rad) =          4.343019 *
+ * Long at v.e.(rad) =         -0.032728 *
+ *****************************************
+
+ ***********************************************
+ * RAINMOD                 11.07.2010 by Larry *
+ ***********************************************
+ * Namelist RAINMOD_NL from <rainmod_namelist> *
+ ***********************************************
+&RAINMOD_NL
+ KBETA=1          ,
+ NPRL=1          ,
+ NPRC=1          ,
+ NDCA=1          ,
+ NCSURF=1          ,
+ NMOMENT=0          ,
+ NSHALLOW=1          ,
+ NSTORAIN=0          ,
+ RCRIT= 0.961700022    , 0.880900025    , 6*0.850000024     , 0.924099922    , 0.983299971    ,
+ 
+ CLWCRIT1=-0.100000001    ,
+ CLWCRIT2=  0.00000000    ,
+ PDEEP=  999999.000    ,
+ RKSHALLOW=  10.0000000    ,
+ GAMMA=  9.99999978E-03,
+ NCLOUDS=1          ,
+ PDEEPTH=  70000.0000    ,
+ NEVAPPREC=1          ,
+ NBETA=3          ,
+ RHBETA=  0.00000000    ,
+ RBETA=  0.00000000    ,
+ /
+
+***********************************************
+* SURFMOD                   12.06.2014 by Edi *
+***********************************************
+* Namelist SURFMOD_NL from <surfmod_namelist> *
+***********************************************
+&SURFMOD_NL
+ NSPINIT=0          ,
+ NSURF=1          ,
+ NOROMAX=21         ,
+ /
+
+***********************************************
+* LANDMOD                 22.02.2005 by Larry *
+***********************************************
+* Namelist LANDMOD_NL from <landmod_namelist > *
+***********************************************
+&LANDMOD_NL
+ NLANDT=1          ,
+ NLANDW=1          ,
+ ALBLAND= 0.200000003    ,
+ DZ0LAND=  2.00000000    ,
+ DRHSLAND= 0.250000000    ,
+ ALBSMIN= 0.400000006    ,
+ ALBSMAX= 0.800000012    ,
+ ALBSMINF= 0.300000012    ,
+ ALBSMAXF= 0.400000006    ,
+ ALBGMIN= 0.600000024    ,
+ ALBGMAX= 0.800000012    ,
+ DSMAX=  5.00000000    ,
+ WSMAX= 0.500000000    ,
+ DRHSFULL= 0.400000006    ,
+ DZGLAC= -1.00000000    ,
+ DZTOP= 0.200000003    ,
+ DSOILZ= 0.400000006    , 0.800000012    ,  1.60000002    ,  3.20000005    ,  6.40000010    ,
+ 
+ RLUE=  3.40000000E-10,
+ CO2CONV=  8.29999975E-04,
+ TAU_VEG=  10.0000000    ,
+ TAU_SOIL=  42.0000000    ,
+ RNBIOCATS=  0.00000000    ,
+ NEWSURF=0          ,
+ RINIFOR= 0.500000000    ,
+ NWATCINI=0          ,
+ DWATCINI=  0.00000000    ,
+ /
+ Land:   704 from  2048 =  34%
+ Sea:   1344 from  2048 =  66%
+
+*********************************************
+* SEAMOD                29.07.2004 by Larry *
+*********************************************
+* Namelist SEAMOD_NL from <seamod_namelist> *
+*********************************************
+&SEAMOD_NL
+ ALBSEA=  6.89999983E-02,
+ ALBICE= 0.699999988    ,
+ DZ0SEA=  1.49999996E-05,
+ DZ0ICE=  1.00000005E-03,
+ DRHSSEA=  1.00000000    ,
+ DRHSICE=  1.00000000    ,
+ NCPL_ATMOS_ICE=1          ,
+ CHARNOCK=  1.79999992E-02,
+ /
+
+ *********************************************
+ * ICEMOD                06.03.2013 by Larry *
+ *********************************************
+ * Namelist ICEMOD_NL from <icemod_namelist> *
+ *********************************************
+&ICEMOD_NL
+ NOUT=32         ,
+ NFLUKO=0          ,
+ NPERPETUAL_ICE=0          ,
+ NTSPD=32         ,
+ NPRINT=0          ,
+ NPRHOR=0          ,
+ NENTROPY=0          ,
+ NICE=1          ,
+ NSNOW=1          ,
+ NTSKIN=1          ,
+ NCPL_ICE_OCEAN=1          ,
+ TAUNC=  0.00000000    ,
+ XMIND= 0.100000001    ,
+ XMAXD=  9.00000000    ,
+ THICEC= 0.500000000    ,
+ NEWSURF=0          ,
+ NAOUT=0          ,
+ /
+
+*************************************************
+* OCEANMOD                  13.10.2005 by Larry *
+*************************************************
+* Namelist OCEANMOD_NL from <oceanmod_namelist> *
+*************************************************
+&OCEANMOD_NL
+ NDIAG=480        ,
+ NOUT=32         ,
+ NFLUKO=0          ,
+ NTSPD=32         ,
+ NOCEAN=1          ,
+ NPRINT=0          ,
+ NPRHOR=0          ,
+ NPERPETUAL_OCEAN=0          ,
+ NAOMOD=320        ,
+ NLSG=1          ,
+ TAUNC=  0.00000000    ,
+ DLAYER=  50.0000000    ,
+ VDIFFKL=  9.99999975E-05,
+ NEWSURF=0          ,
+ HDIFFK=  100000.000    ,
+ HDIFFK2=  10000.0000    ,
+ NSHDIFF=0          ,
+ NENTROPY=0          ,
+ NHDIFF=0          ,
+ /
+
+ ****************************************
+ * CPLMOD                cplmod 20/06/08 *
+ ******************************************
+ * Namelist CPLPAR from <cpl_namelist>    *
+ ******************************************
+&CPLPAR
+ NDBOX=1          ,
+ NDBOY=1          ,
+ NPRINT=0          ,
+ NISSTA=0          ,
+ NIICEA=0          ,
+ NIPMEA=0          ,
+ NITAUA=0          ,
+ NIHFLA=0          ,
+ NISSTO=1          ,
+ NIHFLO=1          ,
+ NFLSST=0          ,
+ NFLTAU=0          ,
+ NFLICE=0          ,
+ NFLFRESH=0          ,
+ NFLOHEAT=0          ,
+ NCSSTA=3          ,
+ NCICEA=1          ,
+ NCPMEA=3          ,
+ NCTAUA=3          ,
+ NCHFLO=3          ,
+ NCSSTO=3          ,
+ CFACSST=  1.00000000    ,
+ CFACICE=  1.00000000    ,
+ CFACTAU=  1.00000000    ,
+ CFACFRESH=  1.00000000    ,
+ NROFFC=1          ,
+ FLUKOFILE="fluko_data.txt                                                                  ",
+ RUNOFFMAP="runoffmap.txt                                                                   ",
+ /
+  
+ No flux correction chosen in CLSGINI
+  
+
+ **************************************************
+ * Large Scale Geostrophic (LSG) Ocean Model      *
+ * ---------------------------------------------- *
+ * Author        : Ernst Maier-Reimer     (MPIfM) *
+ * Modified by   : Uwe  Mikolajewicz      (MPIfM) *
+ * Mixg     by   : Gerrit Lohmann      (AWI-Brhv) *
+ * QuickAdv by   : Andre Paul             (UniHB) *
+ * A-O coupling  : Stephan Lorenz         (MPIfM) *
+ *    and        : Jost von Hardenberg (ISAC-CNR) *
+ * PlaSim version: Frank Lunkeit       (MI UniHH) *
+ *    and        : Edilbert Kirk       (MI UniHH) *
+ **************************************************
+
+  INIPAR: Read namelist input :
+&PARAM
+ NSMIX=3          ,
+ NSVE=2          ,
+ NSFLU=2          ,
+ NEWST=120        ,
+ NTCONT=1          ,
+ IYEAR=10         ,
+ IDATE=-1230      ,
+ NSCOUP=1          ,
+ NTOUT=3          ,
+ NTAVER=1          ,
+ NTBACK=360        ,
+ GRAD1=  5.0000000000000000     ,
+ PHINOR=  93.750000000000000     ,
+ DT=  86400.000000000000     ,
+ DU=  25.000000000000000     ,  75.000000000000000     ,  125.00000000000000     ,  175.00000000000000     ,  225.00000000000000     ,
+   275.00000000000000     ,  350.00000000000000     ,  450.00000000000000     ,  550.00000000000000     ,  650.00000000000000     ,  750.00000000000000     ,
+   850.00000000000000     ,  950.00000000000000     ,  1100.0000000000000     ,  1300.0000000000000     ,  1500.0000000000000     ,  1800.0000000000000     ,
+   2250.0000000000000     ,  2750.0000000000000     ,  3500.0000000000000     ,  4500.0000000000000     ,  5500.0000000000000     ,  6500.0000000000000     ,
+ 
+ KITERM=8          ,
+ BBLTHICK=  300.00000000000000     ,
+ EXPER="xy",
+ NTSURF=3          ,
+ NDIAGFL=0          ,
+ NAQUA=0          ,
+ NPRINT=0          ,
+ NPRI=1          ,
+ NPRJ=1          ,
+ NPRK=1          ,
+ ASTAR= -1.0000000000000000     ,
+ ZSTAR= -1.0000000000000000     ,
+ ARANGE= -1.0000000000000000     ,
+ LAMBDA= -1.0000000000000000     ,
+ /
+ INIPAR: DT set by PlaSim:   DT =    864000. seconds   ( =     10 days )
+ INIPAR: matrix called every NTBACK=    360  timesteps ( =   10.0 years)
+ timestep (seconds):       864000.00
+  Selections:
+  nsmix= 3 ,nsve=  2 ,nsflu= 2 nscoup=  1
+ levels of depth (m):          25.00
+                               75.00
+                              125.00
+                              175.00
+                              225.00
+                              275.00
+                              350.00
+                              450.00
+                              550.00
+                              650.00
+                              750.00
+                              850.00
+                              950.00
+                             1100.00
+                             1300.00
+                             1500.00
+                             1800.00
+                             2250.00
+                             2750.00
+                             3500.00
+                             4500.00
+                             5500.00
+                             6500.00
+  zlen =       10.0
+   depth in u-points read from file
+ xxx fricin gesetzt! xxx
+   fricin changed manually in some grid points
+    ***ken=22 -> fricin=fricin*1.1***
+   depp calculated from depth
+  sum of wet       66304.
+   compute parameters for runoff-model 
+   ifehl=  186    at iiter=    1
+   ifehl=    0 after iiter=   50
+   
+  compute parameters for bbl-model 
+  Quick-like advective scheme invoked.
+  Advection of tracers after farrow and stevens (1995):
+  Explicit in time, third order in space.
+  
+        ash    =     0.1000000000E+04
+        abh    =     0.5000000000E+03
+     du( 1) =    25.00 a_th( 1)     975.615    
+     du( 2) =    75.00 a_th( 2)     930.354    
+     du( 3) =   125.00 a_th( 3)     889.400    
+     du( 4) =   175.00 a_th( 4)     852.344    
+     du( 5) =   225.00 a_th( 5)     818.814    
+     du( 6) =   275.00 a_th( 6)     788.475    
+     du( 7) =   350.00 a_th( 7)     748.293    
+     du( 8) =   450.00 a_th( 8)     703.285    
+     du( 9) =   550.00 a_th( 9)     666.436    
+     du(10) =   650.00 a_th(10)     636.266    
+     du(11) =   750.00 a_th(11)     611.565    
+     du(12) =   850.00 a_th(12)     591.342    
+     du(13) =   950.00 a_th(13)     574.784    
+     du(14) =  1100.00 a_th(14)     555.402    
+     du(15) =  1300.00 a_th(15)     537.137    
+     du(16) =  1500.00 a_th(16)     524.894    
+     du(17) =  1800.00 a_th(17)     513.662    
+     du(18) =  2250.00 a_th(18)     505.554    
+     du(19) =  2750.00 a_th(19)     502.043    
+     du(20) =  3500.00 a_th(20)     500.456    
+     du(21) =  4500.00 a_th(21)     500.062    
+     du(22) =  5500.00 a_th(22)     500.008    
+  
+        pi     =     0.3141592741E+01
+        astar  =     0.8713999705E-04
+        zstar  =     0.2500000000E+04
+        arange =     0.2843000038E-04
+        lambda =     0.4499999806E-02
+     dw( 1) =    50.00 a_tv( 1)    0.450539E-04
+     dw( 2) =   100.00 a_tv( 2)    0.451072E-04
+     dw( 3) =   150.00 a_tv( 3)    0.451627E-04
+     dw( 4) =   200.00 a_tv( 4)    0.452206E-04
+     dw( 5) =   250.00 a_tv( 5)    0.452811E-04
+     dw( 6) =   312.50 a_tv( 6)    0.453605E-04
+     dw( 7) =   400.00 a_tv( 7)    0.454796E-04
+     dw( 8) =   500.00 a_tv( 8)    0.456282E-04
+     dw( 9) =   600.00 a_tv( 9)    0.457924E-04
+     dw(10) =   700.00 a_tv(10)    0.459745E-04
+     dw(11) =   800.00 a_tv(11)    0.461776E-04
+     dw(12) =   900.00 a_tv(12)    0.464058E-04
+     dw(13) =  1025.00 a_tv(13)    0.467335E-04
+     dw(14) =  1200.00 a_tv(14)    0.472956E-04
+     dw(15) =  1400.00 a_tv(15)    0.481494E-04
+     dw(16) =  1650.00 a_tv(16)    0.497522E-04
+     dw(17) =  2025.00 a_tv(17)    0.549229E-04
+     dw(18) =  2500.00 a_tv(18)    0.871400E-04
+     dw(19) =  3125.00 a_tv(19)    0.122086E-03
+     dw(20) =  4000.00 a_tv(20)    0.127616E-03
+     dw(21) =  5000.00 a_tv(21)    0.129277E-03
+     dw(22) =  6000.00 a_tv(22)    0.129995E-03
+   Number of advection-diffusion sub-cycles:
+        kiterm =             8
+ START: reading file kleiswi from channel no 86
+        where the last backup is written on: unit idin= 84 inorm=  0
+ START (INIVAL2): reading restart from channel 84  file=kleiin1  inorm=  0
+ noread=          84
+ Current date:    20211001  time:      162802
+ INIVAL2: Read input from <kleiin1>
+ INIVAL2: Current date:    20211001      162802
+ INIVAL2: Sim     date:           0           0
+ INIVAL2: Timestep    :           0
+  read temperature
+  read salinity
+  read baroclinic modes
+  read barotropic velocities
+  read surface elevation
+  read ice thickness
+  read soil storage (runoff model)
+  read runoff (riv)
+ read dummy, code=   -99.000000000000000     
+ old velocities read
+ START (OUTBACK): writing restart  on  channel 52  file=kleiauf  iswit= 86
+ +  OUTBACK  YYYYY -MMDD :   00  0000 backup written on file kleiauf  +
+ FLs matrx =         6018        2175
+ >>> Read matrix data from file <mat77> <<<
+  nddr(404)                    20
+ Modified beklas.
+  
+  LSG_INIT:  *** INITIALISATION FINISHED *** 
+  
+ Surface pressure with no topography =    1011.00 [hPa]
+ Mean of topographic height          =     231.41 [m]
+ Mean of surface pressure            =     983.62 [hPa]
+
+ ******************************************************************************
+ *    *  1-Oct-0051   0:00  Zonal Wind [0.1 m/s]                              *
+ ******************************************************************************
+ * Lv *  86N 75N 64N 53N 42N 30N 19N  8N  8S 19S 30S 42S 53S 64S 75S 86S * Lv *
+ ******************************************************************************
+ *  1 *   17  78 204 268 168  12 -30 -41   5  66 208 324 312 266 188  59 *  1 *
+ *  2 *   37  28 131 294 285  97 -44-108 -17 143 442 428 161 114  85  41 *  2 *
+ *  3 *   21  52  93 264 289 106   1 -76  19 174 431 379 107 101  99  40 *  3 *
+ *  4 *   27  50  68 211 224  85  27 -65  18 155 334 293  72  87  98  27 *  4 *
+ *  5 *   25  34  50 157 161  53  18 -53  16  98 237 219  43  77  84  23 *  5 *
+ *  6 *   23  11  39 114 112  22   2 -48  -2  58 156 160  26  54  53  34 *  6 *
+ *  7 *    9  -4  32  83  74   0 -12 -46 -21  26  97 118  11  35  33  27 *  7 *
+ *  8 *    1 -21  28  61  41 -15 -31 -30 -48  -7  55  93  -1  21   6  18 *  8 *
+ *  9 *   -2 -34  26  45  16 -26 -49 -10 -65 -39  30  81 -13   8 -22   8 *  9 *
+ * 10 *   -4 -35  18  29   5 -25 -42 -10 -50 -39  21  62 -16  -2 -36  12 * 10 *
+ ******************************************************************************
+
+
+ ******************************************************************************
+ *    *  1-Oct-0051   0:00  Meridional Wind [0.1 m/s]                         *
+ ******************************************************************************
+ * Lv *  86N 75N 64N 53N 42N 30N 19N  8N  8S 19S 30S 42S 53S 64S 75S 86S * Lv *
+ ******************************************************************************
+ *  1 *    0   0   0   0   0   0   0   0  -1  -1  -1   0   0   0  -1   0 *  1 *
+ *  2 *    0  -4   0  -3  -2   0   3   3   3   0  -3   2   1   2   0   0 *  2 *
+ *  3 *    0  -4   0  -4   0   0   7   0  -6  -7   5   0   1   0   0   1 *  3 *
+ *  4 *    0   3   0  -2   3   1   3   1  -5  -1   0   0   1   0  -7  -1 *  4 *
+ *  5 *    0   6  -1   0   1   3   0   0  -5  -1   0   0   0  -1  -8  -5 *  5 *
+ *  6 *    2   6  -1   0   1   4   0   2  -2   1   0   1   0   0  -5  -7 *  6 *
+ *  7 *    1   8   0   1   3   2   0  -3   0   0  -1   1   0   0  -4  -4 *  7 *
+ *  8 *    0   7   0   2   2   0  -1  -3   0  -1  -1   1  -1   0  -3   1 *  8 *
+ *  9 *   -2   9   1   7   2  -3  -7   0  17   5   0  -6   0  -1  -4   2 *  9 *
+ * 10 *   -1  -8   8   9   3  -5 -15   3  22  13   0  -8   1   7  25   4 * 10 *
+ ******************************************************************************
+
+
+ ******************************************************************************
+ *    *  1-Oct-0051   0:00  Temperature [C]                                   *
+ ******************************************************************************
+ * Lv *  86N 75N 64N 53N 42N 30N 19N  8N  8S 19S 30S 42S 53S 64S 75S 86S * Lv *
+ ******************************************************************************
+ *  1 *  -57 -57 -52 -51 -54 -57 -58 -58 -58 -58 -54 -47 -48 -55 -63 -68 *  1 *
+ *  2 *  -64 -63 -63 -60 -62 -65 -66 -66 -66 -64 -61 -61 -64 -69 -67 -66 *  2 *
+ *  3 *  -57 -58 -56 -53 -47 -45 -44 -46 -46 -45 -47 -54 -61 -64 -64 -66 *  3 *
+ *  4 *  -50 -50 -48 -42 -33 -28 -24 -25 -25 -27 -33 -44 -52 -53 -60 -64 *  4 *
+ *  5 *  -37 -37 -35 -28 -20 -14 -10 -10 -10 -11 -18 -29 -36 -39 -50 -54 *  5 *
+ *  6 *  -27 -24 -23 -17 -10  -3   0   0   0  -1  -6 -18 -23 -27 -41 -49 *  6 *
+ *  7 *  -19 -15 -13  -8  -1   3   7   8   8   5   0  -8 -13 -17 -31 -41 *  7 *
+ *  8 *  -14  -9  -6  -1   5  10  14  15  14  11   5  -1  -5 -10 -25 -37 *  8 *
+ *  9 *   -8  -5  -1   3  10  16  20  20  19  15  10   4   0  -5 -22 -35 *  9 *
+ * 10 *   -4  -4   1   7  14  20  24  24  23  19  15   8   3  -2 -31 -47 * 10 *
+ ******************************************************************************
+
+
+ ******************************************************************************
+ *    *  1-Oct-0051   0:00  specific humidity [0.1g/Kg]                       *
+ ******************************************************************************
+ * Lv *  86N 75N 64N 53N 42N 30N 19N  8N  8S 19S 30S 42S 53S 64S 75S 86S * Lv *

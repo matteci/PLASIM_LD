@@ -1,0 +1,14 @@
+MPI_RUN=mpiexec
+MOST_F90=mpif90
+MOST_F90_OPTS=-O3
+MPIMOD=mpimod
+MOST_CC=mpicc
+MOST_CC_OPTS=-O3
+MOST_PP=mpicxx
+MOST_PP_OPTS=-O3 -DMPI
+MOST_AS=as
+LEGMOD=legini
+LEGFAST=legfast32.o
+GUILIB=-L/usr/lib/X11 -lX11
+GUIMOD=guimod
+PUMAX=pumax

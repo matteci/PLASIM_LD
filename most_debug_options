@@ -1,0 +1,3 @@
+MOST_F90_OPTS=-g -ffpe-trap=invalid,zero,overflow -fbounds-check
+MOST_CC_OPTS=-g
+MOST_PP_OPTS=-g -DMPI

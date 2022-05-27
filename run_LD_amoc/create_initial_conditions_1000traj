@@ -1,0 +1,31 @@
+#!/bin/sh
+
+sourcerestdir=$1   # directory of control run restarts
+sourcerestname=$2  # name of control run
+expdir=$3          #  
+expname=$4         # nome of important sampling experiment
+trajinit=$5        # first id of ensemble trajectories
+trajend=$6         # last id of ensemble trajectories
+initblock=$7       # 1 (always?)
+startrest=$8       # initial time (e.g. years) in control restart file
+periodrest=$9      # time to skip (e.g. years) till folowing year restart file
+
+initexpdir=`printf '%s/init' ${expdir}`
+initblockdir=`printf 'block_%04d' ${initblock}`
+
+rest=${startrest}
+traj=${trajinit}
+while [ ${traj} -le ${trajend} ]
+do
+#  restname='l201_REST.0001'  ### TO BE CHANGED ###
+  lsgrestname='l201_LSGREST.0001'  ### TO BE CHANGED ###
+
+#  initname=`printf '%s_init.%04d.%04d' ${expname} ${traj} ${initblock}` # formato nome condizioni iniziali
+  lsginitname=`printf '%s_lsginit.%04d.%04d' ${expname} ${traj} ${initblock}` # formato nome condizioni iniziali
+  
+#  cp ${sourcerestdir}/${restname} ${initexpdir}/${initblockdir}/${initname}
+  cp ${sourcerestdir}/${lsgrestname} ${initexpdir}/${initblockdir}/${lsginitname}
+  
+  rest=`expr ${rest} + ${periodrest}`
+  traj=`expr ${traj} + 1`
+done

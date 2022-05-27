@@ -1,0 +1,29 @@
+#!/bin/sh
+
+expdir=$1
+expname=$2
+trajrun=$3
+traj=$4
+block=$5
+
+runexpdir=`printf '%s/run' ${expdir}`
+dataexpdir=`printf '%s/data' ${expdir}`
+restexpdir=`printf '%s/rest' ${expdir}`
+diagexpdir=`printf '%s/diag' ${expdir}`
+
+runtrajdir=`printf 'run_%04d' ${trajrun}`
+blockdir=`printf 'block_%04d' ${block}`
+
+dataname=`printf '%s_data.%04d.%04d' ${expname} ${traj} ${block}`
+icename=`printf '%s_ice.%04d.%04d' ${expname} ${traj} ${block}`
+oceanname=`printf '%s_ocean.%04d.%04d' ${expname} ${traj} ${block}`
+diagname=`printf '%s_diag.%04d.%04d' ${expname} ${traj} ${block}`
+restname=`printf '%s_rest.%04d.%04d' ${expname} ${traj} ${block}`
+
+cp ${runexpdir}/${runtrajdir}/plasim_status ${runexpdir}/${runtrajdir}/plasim_restart
+
+mv ${runexpdir}/${runtrajdir}/plasim_output ${dataexpdir}/${blockdir}/${dataname}
+mv ${runexpdir}/${runtrajdir}/ice_output ${dataexpdir}/${blockdir}/${icename}
+mv ${runexpdir}/${runtrajdir}/ocean_output ${dataexpdir}/${blockdir}/${oceanname}
+mv ${runexpdir}/${runtrajdir}/plasim_diag ${diagexpdir}/${blockdir}/${diagname}
+mv ${runexpdir}/${runtrajdir}/plasim_status ${restexpdir}/${blockdir}/${restname}

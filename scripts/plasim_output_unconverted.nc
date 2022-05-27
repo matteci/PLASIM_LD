@@ -1,0 +1,1 @@
+/home/zappa/work/PLASIM/PLASIM-master/AMOC_LD_amoc_pos_ntraj100_k10_LBlock360_p1_startIDl207-y2500/data/AMOC_LD_amoc_pos_ntraj100_k10_LBlock360_p1_startIDl207-y2500_data.0053.0125.nc

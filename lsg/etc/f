@@ -1,0 +1,9 @@
+cont1.f:            hordiv=utot(il,j,k+1)*delta(il,j,k+1)*dphi-utot(i,j,k+1)    &
+cont1.f:     &            *delta(i,j,k+1)*dphi+vtot(i,j+1,k+1)*delta(i,j+1,k+1) &
+cont1.f:     &            *dl(j+1)-vtot(il,j-1,k+1)*delta(il,j-1,k+1)*dl(j-1)
+diva.f:            ubold(i,j)=ubold(i,j)+utot(i,j,k)*delta(i,j,k)
+diva.f:            vbold(i,j)=vbold(i,j)+vtot(i,j,k)*delta(i,j,k)
+prefor1.f:          b1b(i,1)=b1b(i,1)-dliha(i)*(prb(i,k)-pa(i,k))*deltaa(i,k)
+prefor1.f:          b1b(i,2)=b1b(i,2)-dpin*(pa(i-ien,k)-prb(i+ien,k))*deltaa(i,k)
+prefor2.f:              zx = zx - zdli * (p(l,j  ,k)-p(i,j  ,k)) * delta(i,j,k)
+prefor2.f:              zy = zy - dpin * (p(i,j-1,k)-p(l,j+1,k)) * delta(i,j,k)

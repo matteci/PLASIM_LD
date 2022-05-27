@@ -1,0 +1,186 @@
+1 5 0001
+Submitted batch job 5787523
+1 10 0001
+Submitted batch job 5787640
+1 10 0001
+Submitted batch job 5788363
+2 10 0002
+Submitted batch job 5788475
+2 5 0002
+Submitted batch job 5788755
+3 10 0003
+Submitted batch job 5789037
+3 5 0003
+Submitted batch job 5789625
+4 10 0004
+Submitted batch job 5790088
+4 5 0004
+Submitted batch job 5790898
+5 10 0005
+Submitted batch job 5790915
+6 10 0006
+Submitted batch job 5791594
+5 5 0005
+Submitted batch job 5791710
+7 10 0007
+Submitted batch job 5792188
+6 5 0006
+Submitted batch job 5792354
+8 10 0008
+Submitted batch job 5792645
+7 5 0007
+Submitted batch job 5793004
+9 10 0009
+Submitted batch job 5793069
+8 5 0008
+Submitted batch job 5793268
+9 5 0009
+Submitted batch job 5793437
+1 10 0001
+Submitted batch job 5797137
+1 10 0001
+Submitted batch job 5797140
+1 10 0001
+Submitted batch job 5797371
+1 5 0001
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50001.sh
+2 5 0002
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50002.sh
+3 5 0003
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50003.sh
+4 5 0004
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50004.sh
+5 5 0005
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50005.sh
+6 5 0006
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50006.sh
+7 5 0007
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50007.sh
+8 5 0008
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50008.sh
+9 5 0009
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_50009.sh
+1 5 0001
+Submitted batch job 5797580
+1 10 0001
+Submitted batch job 5797592
+2 10 0002
+Submitted batch job 5798905
+2 5 0002
+Submitted batch job 5798927
+3 5 0003
+Submitted batch job 5800350
+3 10 0003
+Submitted batch job 5800399
+4 10 0004
+Submitted batch job 5801228
+5 10 0005
+./loop_run_large_dev_Arctic.sh: line 10: run_large_dev_Arctic.sh: No such file or directory
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_0005-10-10.sh
+6 10 0006
+./loop_run_large_dev_Arctic.sh: line 10: run_large_dev_Arctic.sh: No such file or directory
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_0006-10-10.sh
+7 10 0007
+./loop_run_large_dev_Arctic.sh: line 10: run_large_dev_Arctic.sh: No such file or directory
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_0007-10-10.sh
+8 10 0008
+./loop_run_large_dev_Arctic.sh: line 10: run_large_dev_Arctic.sh: No such file or directory
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_0008-10-10.sh
+9 10 0009
+./loop_run_large_dev_Arctic.sh: line 10: run_large_dev_Arctic.sh: No such file or directory
+sbatch: error: Unable to open file run_large_dev_Arctic_edited_0009-10-10.sh
+4 5 0004
+Submitted batch job 5801284
+1 10 0001
+Submitted batch job 5801285
+2 10 0002
+Submitted batch job 5801716
+5 5 0005
+Submitted batch job 5801959
+3 10 0003
+Submitted batch job 5802132
+6 5 0006
+Submitted batch job 5802273
+4 10 0004
+Submitted batch job 5802284
+5 10 0005
+Submitted batch job 5802504
+7 5 0007
+Submitted batch job 5802674
+6 10 0006
+Submitted batch job 5803034
+8 5 0008
+Submitted batch job 5803310
+7 10 0007
+Submitted batch job 5803687
+9 5 0009
+Submitted batch job 5804879
+8 10 0008
+Submitted batch job 5808505
+9 10 0009
+Submitted batch job 5810406
+1 5 0001
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+2 5 0002
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+3 5 0003
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+4 5 0004
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+5 5 0005
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+6 5 0006
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+7 5 0007
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+8 5 0008
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+9 5 0009
+sed: -e expression #4, char 9: unterminated `s' command
+sbatch: error: Batch script is empty!
+1 5 0001
+Submitted batch job 5832471
+1 5 0001
+Submitted batch job 5832491
+2 5 0002
+Submitted batch job 5833573
+3 5 0003
+Submitted batch job 5834176
+4 5 0004
+Submitted batch job 5841305
+5 5 0005
+Submitted batch job 5843101
+6 5 0006
+Submitted batch job 5844035
+7 5 0007
+Submitted batch job 5844927
+8 5 0008
+Submitted batch job 5845722
+9 5 0009
+Submitted batch job 5846341
+1 5 0001
+Submitted batch job 5874233
+2 5 0002
+Submitted batch job 5874234
+3 5 0003
+Submitted batch job 5874235
+4 5 0004
+Submitted batch job 5874236
+5 5 0005
+Submitted batch job 5874237
+6 5 0006
+Submitted batch job 5874238
+7 5 0007
+Submitted batch job 5874239
+8 5 0008
+Submitted batch job 5874240
+9 5 0009
+Submitted batch job 5874241

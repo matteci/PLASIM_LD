@@ -1,0 +1,12 @@
+MOST_F90=gfortran
+MOST_F90_OPTS=-O3
+MPIMOD=mpimod_stub
+MOST_CC=gcc  #  /usr/bin/gcc
+MOST_CC_OPTS=-O3 -I /usr/lib/X11/include
+MOST_PP=c++  #  /usr/bin/c++
+MOST_AS=as
+LEGMOD=legini
+LEGFAST=legfast32.o
+GUILIB=-L/usr/lib/X11 -lX11
+GUIMOD=guimod
+PUMAX=pumax
