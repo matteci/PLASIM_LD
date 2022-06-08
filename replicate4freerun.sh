@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# this is a joke
+
 here=`pwd` 
 year=0089
 
