@@ -1,0 +1,23 @@
+At line 4342 of file lsgmod.f90 (unit = 84, file = 'kleiin1')
+Fortran runtime error: End of file
+
+Error termination. Backtrace:
+#0  0x7fd9169f08da
+#1  0x7fd9169f1395
+#2  0x7fd9169f1b1a
+#3  0x7fd916be9ebb
+#4  0x7fd916bea8df
+#5  0x7fd916bea9dc
+#6  0x7fd916bed06a
+#7  0x55aaa03afe0d
+#8  0x55aaa03c104a
+#9  0x55aaa03c740d
+#10  0x55aaa03d7871
+#11  0x55aaa038798a
+#12  0x55aaa037e937
+#13  0x55aaa03768bd
+#14  0x55aaa034d625
+#15  0x55aaa031150c
+#16  0x7fd91665709a
+#17  0x55aaa0311569
+#18  0xffffffffffffffff

@@ -1,38 +1,39 @@
 #!/bin/sh
 #
 #SBATCH -J PLASIM-large-dev_%j
-#SBATCH --time=72:00:00
+#SBATCH --time=00:01:00
 #SBATCH --nodes=1
-#SBATCH --ntasks=25
-#SBATCH --ntasks-per-node=25
+#SBATCH --ntasks=2
+#SBATCH --ntasks-per-node=2
 #SBATCH --output=PLASIM-large-dev_%j.log
 #SBATCH --error=PLASIM-large-dev_%j.log 
-#SBATCH --partition=batch
+#SBATCH --partition=debug
 
 ##### LOAD PYTHON VIRTUAL ENVIRONMENT WITH MODULES: numpy, math, netCDF4
 #source $HOME/my_venv/bin/activate
-
-#set -xv
 
 # -D: Changing script to create ensembles adding noise only at restart.
 
 #### NAMELIST ##############################################################
 nameThisFile='run_large_dev_LD'
-expname="AMOC_LD_VARNAME_pos"
+expname="AMOC_LD_VARNAME_pos_test"
 #
 # Parameters controlling length of experiment
-newexperiment=0     # 1: nuovo
+newexperiment=1     # 1: nuovo
 
-initblock=126        # block è periodo lungo come resampling. 
-endblock=200         # ultimo blocco: ti definisce lunghezza integrazione
+initblock=1        # block è periodo lungo come resampling. 
+endblock=2         # ultimo blocco: ti definisce lunghezza integrazione
+force=1           # sovrascrittura delle cartelle di output
+light=1           # light postprocessing as defined in postpro_light.sh
 
 # Parameters controlling resampling, observable and weights
 varname='amoc'    # variabile usata per resampling
 domain='DIAG'     # domain in PLASIM output of varname
+
 resamplingname='resampling_Amoc.py'   # file che fa il resampling
-ntrajs=100
+ntrajs=2
 k=10
-NMonths=12    # length resampling block
+NMonths=1     # length resampling block
 NDays=0       # length resampling block
 LYear=360     # 
 startID=l207-y2500_r2  # 0BCD (B: ocean state, C: atmospheric state, D: repeat)
@@ -45,7 +46,7 @@ nparallel=1 # cores usati da PLASIM. with nparallel=2 there are memory problems,
 #
 # Directory names
 scriptdir=`pwd`
-homedir='/work/users/zappa/PLASIM/PLASIM-master'
+homedir='/work/users/cini/PLASIM-LD'
 modeldir=${homedir}/plasim/run # cartella con eseguibili di PLASIM compilato per processori con namelist etc
 modelname=`printf 'most_plasim_t21_l10_p%d.x' ${nparallel}` # nome eseguibile
 # 
@@ -58,7 +59,7 @@ plasimrestname=l207_REST.2500
 lsgrestname=l207_LSGREST.2500
 #
 # run trajectory reconstruction from block 1 to endblock
-reconstructTrajs='y'
+reconstructTrajs='n'
 #
 # EXPERIMENT SPECIFIC FLAGS
 # Ocean Configuration
@@ -80,7 +81,7 @@ echo ${SLURM_MEM}
 ###### INITIALISATION ############
 # prepare plasim_namelist
 KR=1
-sed  -e "s/LYear/${LYear}/" -e "s/NMonths/${NMonths}/" -e "s/NDays/${NDays}/" -e "s/kick/${KR}/" \
+sed  -e "s/LYear/${LYear}/" -e "s/NMonths/${NMonths}/" -e "s/NDays/${NDays}/" -e "s/kickres/${KR}/" \
      plasim_namelist0 > ${modeldir}/plasim_namelist 
 
 # prepare ocean namelist
@@ -89,15 +90,14 @@ cp ${modeldir}/input_${diffusion} ${modeldir}/input
 # determine dt parameter for resamplying
 TotDaysBlock=$((${NDays}+${NMonths}*30))
 NBlocks=$((${endblock}-${initblock}+1))
-TotDaysRun=$((${NBlocks} * ${TotDaysBlock}))
 dt=`echo "scale=5;${NDays}/${LYear}" | bc`
-
-if [ $newexperiment == 0 ]; then # cleaner to just remove TotDaysRun from expname
-    TotDaysRun=$((${endblock} * ${TotDaysBlock}))
-fi
 
 # update expname to include parameter setting
 expname=${expname}_ntraj${ntrajs}_k${k}_LBlock${TotDaysBlock}_p${nparallel}_startID${startID}
+echo ${homedir}/${expname}
+if [[ -d ${homedir}/${expname} && ${force} -eq 1 && ${newexperiment} -eq 1 ]]; then
+    rm -rf ${homedir}/${expname}
+fi
 
 
 #note that the number of tasks must be chosen so that SLURM_NTASKS/NPARALLEL is an integer
@@ -122,7 +122,7 @@ expdir=`printf '%s/%s' ${homedir} ${expname}`
 runexpdir=`printf '%s/run' ${expdir}`   # numero di cartelle per ogni run parallelo 
 dataexpdir=`printf '%s/data' ${expdir}` # output del modello
 restexpdir=`printf '%s/rest' ${expdir}` # restart stessi a fine run
-initexpdir=`printf '%s/init' ${expdir}` # restart dopo resampling: resampling mischi i restart files
+initexpdir=`printf '%s/init' ${expdir}` # estart dopo resampling: resampling mischi i restart files
 diagexpdir=`printf '%s/diag' ${expdir}` # diagnostiche di PLASIM
 postexpdir=`printf '%s/post' ${expdir}` # all'inizio nulla 
 resamplingexpdir=`printf '%s/resampling' ${expdir}` # informazioni su come è stato fatto il resampling: contiene file python con info
@@ -317,18 +317,27 @@ do
   done
   wait
 
-  ##
-  tar -cf ${expdir}/diag/${expname}_diag_${blocklabel}.tar -C ${expdir}/diag/${blocklabel} .
-  rm ${expdir}/diag/${blocklabel}/*
-  tar -cf ${expdir}/resampling/${expname}_resampling_${blocklabel}.tar -C ${expdir}/resampling/${blocklabel} .
-  rm ${expdir}/resampling/${blocklabel}/*
-  tar -cf ${expdir}/init/${expname}_init_${blocklabel}.tar -C ${expdir}/init/${blocklabel} .
-  rm ${expdir}/init/${blocklabel}/*
-  tar -cf ${expdir}/rest/${expname}_rest_${blocklabel}.tar -C ${expdir}/rest/${blocklabel} .
-  rm ${expdir}/rest/${blocklabel}/*
-  tar -cf ${expdir}/data/${expname}_data_${blocklabel}.tar -C ${expdir}/data/${blocklabel}/netcdf/ .
-  rm ${expdir}/data/${blocklabel}/*.${blocknumber}
-  rm ${expdir}/data/${blocklabel}/netcdf/*
+  ## tar files according to flag light
+  if [ ${light} -eq 1 ]; then
+       echo "ligh mode on"
+     ${scriptdir}/postpro_light.sh ${expdir} ${expname} ${blocklabel} ${block} ${ntrajs}
+  else
+      echo "light mode off"
+       tar -cf ${expdir}/diag/${expname}_diag_${blocklabel}.tar -C ${expdir}/diag/${blocklabel} .
+       rm ${expdir}/diag/${blocklabel}/*
+       tar -cf ${expdir}/resampling/${expname}_resampling_${blocklabel}.tar -C ${expdir}/resampling/${blocklabel} .
+       rm ${expdir}/resampling/${blocklabel}/*
+       tar -cf ${expdir}/init/${expname}_init_${blocklabel}.tar -C ${expdir}/init/${blocklabel} .
+       rm ${expdir}/init/${blocklabel}/*
+       tar -cf ${expdir}/rest/${expname}_rest_${blocklabel}.tar -C ${expdir}/rest/${blocklabel} .
+       rm ${expdir}/rest/${blocklabel}/*
+       tar -cf ${expdir}/data/${expname}_data_${blocklabel}.tar -C ${expdir}/data/${blocklabel}/netcdf/ .
+       rm ${expdir}/data/${blocklabel}/*.${blocknumber}
+       rm ${expdir}/data/${blocklabel}/netcdf/*
+  fi
+
+
+  
   blocknumber=`printf '%04d' ${block}`
   cd ${expdir}/post/ctrlobs
   if [ $domain == DIAG ]; then
@@ -344,7 +353,7 @@ do
   # Adjust kickrestart to zero if running unperturbed ensemble
   if [[ $k == 0 && ${block} -eq 1 ]]; then
       for f in `ls ${expdir}/run/run_*/plasim_namelist`; do
-	  sed  -e "s/LYear/${LYear}/" -e "s/NMonths/${NMonths}/" -e "s/NDays/${NDays}/" -e "s/kick/0/" \
+	  sed  -e "s/LYear/${LYear}/" -e "s/NMonths/${NMonths}/" -e "s/NDays/${NDays}/" -e "s/kickres/0/" \
 	       ${scriptdir}/plasim_namelist0 > ${f}
       done
   fi

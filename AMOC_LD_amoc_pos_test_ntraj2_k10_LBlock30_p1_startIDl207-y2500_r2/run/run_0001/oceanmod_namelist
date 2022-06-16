@@ -1,0 +1,5 @@
+ &oceanmod_nl
+ NOCEAN      =     1
+ NLSG        =     1
+ NHDIFF      =     0
+ /END

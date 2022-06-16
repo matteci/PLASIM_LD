@@ -1,0 +1,10 @@
+ &param
+  kiterm=8
+  ntback=360
+  ntout=3
+  ntsurf=3
+  astar=0.8714e-04
+  arange=0.2843e-04
+  zstar=2500
+  lambda=4.5e-03
+&end

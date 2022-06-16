@@ -342,8 +342,8 @@ if [ ! -z "$fsp" ]; then
       #$cdozip merge tempfile_del$$.nc uv_tempfile$$.nc ht_tempfile$$.nc tempfile_grid$$.nc
 
       # $cdozip merge gaussian$$.nc uv_gaussian$$.nc ht_gaussian$$.nc pl_gaussian$$.nc tempfile$$.nc
-      $cdozip merge gaussian$$.nc uv_gaussian$$.nc ht_gaussian$$.nc press$$.nc pl_gaussian$$.nc tempfile$$.nc
-      
+      $cdozip merge gaussian$$.nc uv_gaussian$$.nc ht_gaussian$$.nc press$$.nc pl_gaussian$$.nc tempfile1$$.nc
+      $cdo ml2pl,92500,85000,70000,50000,30000,20000,10000,5000  tempfile1$$.nc  tempfile$$.nc
       # from latest master
       #$cdonctab $fmonth $fyear $fixzgrid -setgrid,$spgrid grid_$$_02.srv spectral$$.nc
       #$cdonctab $fmonth $fyear $fixzgrid $delcode333 -setgrid,$gpgrid grid_$$_01.srv gaussian$$.nc

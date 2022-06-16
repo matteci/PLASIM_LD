@@ -1,0 +1,37 @@
+#!/bin/sh
+
+sourcerestdir=$1   # directory of control run restarts
+restname=$2        # name of PLASIM restart
+lsgrestname=$3     # name of LSG restart
+expdir=$4          #  
+expname=$5         # nome of important sampling experiment
+trajinit=$6        # first id of ensemble trajectories
+trajend=$7         # last id of ensemble trajectories
+initblock=$8       # 1 (always?)
+
+initexpdir=`printf '%s/init' ${expdir}`
+initblockdir=`printf 'block_%04d' ${initblock}`
+
+traj=${trajinit}
+while [ ${traj} -le ${trajend} ]
+do
+    #  restname='l201_REST.0001'  ### TO BE CHANGED ###
+    #  lsgrestname='l201_LSGREST.0001'  ### TO BE CHANGED ###
+    
+    initname=`printf '%s_init.%04d.%04d' ${expname} ${traj} ${initblock}` # formato nome condizioni iniziali
+    lsginitname=`printf '%s_lsginit.%04d.%04d' ${expname} ${traj} ${initblock}` # formato nome condizioni iniziali
+
+    if [ -f ${sourcerestdir}/${restname} ]; then
+	cp ${sourcerestdir}/${restname} ${initexpdir}/${initblockdir}/${initname}
+    else
+	echo WARNING: missing plasim restart, using standard initial condition
+    fi
+
+    if [ -f ${sourcerestdir}/${lsgrestname} ]; then
+	cp ${sourcerestdir}/${lsgrestname} ${initexpdir}/${initblockdir}/${lsginitname}
+    else
+	echo WARNING: missing lsg restart, using standard initial condition
+    fi
+	
+    traj=`expr ${traj} + 1`
+done

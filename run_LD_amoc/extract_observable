@@ -43,6 +43,7 @@ case ${domain} in
 	outputname=$diagname;;
 esac
 
+
 # define the folders and files where the burner and the namelist are.
 # this could be done also in the main script maybe, but in order to
 # be flexible it is easier to do it here, and not automize everything.
@@ -65,8 +66,8 @@ else
 fi
 
 # define burner log file and folder name. This file should be deleted eventually.
-burnlogdir='ctrlobs'
-burnlogname=`printf '%s_burn_ctrlobs.%04d.%04d.log' ${expname} ${traj} ${block}`
+#burnlogdir='ctrlobs'
+#burnlogname=`printf '%s_burn_ctrlobs.%04d.%04d.log' ${expname} ${traj} ${block}`
 
 # extract the control observable. Here it is supposed that the observable
 # is in the standard output (i.e, not in the ocean or ice output).

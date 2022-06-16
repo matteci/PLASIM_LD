@@ -1,0 +1,85 @@
+#!/bin/sh
+# D1: development to include extraction of ice volume
+
+expdir=$1
+expname=$2
+traj=$3
+block=$4
+obsname=$5
+domain=$6
+
+# define folders like in the main script. It is easier this way rather
+# than giving them as input. Check consistency, but again, at this stage
+# this script is not fully automatized (not clear if it will ever be).
+runexpdir=`printf '%s/run' ${expdir}`
+dataexpdir=`printf '%s/data' ${expdir}`
+restexpdir=`printf '%s/rest' ${expdir}`
+diagexpdir=`printf '%s/diag' ${expdir}`
+postexpdir=`printf '%s/post' ${expdir}`
+runtrajdir=`printf 'run_%04d' ${traj}`
+blockdir=`printf 'block_%04d' ${block}`
+
+# define folders like in the organize_output script. It is easier this 
+# way rather than giving them as input. Check consistency, but again, 
+# at this stage this script is not fully automatized (not clear if it 
+# will ever be).
+dataname=`printf '%s_data.%04d.%04d' ${expname} ${traj} ${block}`
+icename=`printf '%s_ice.%04d.%04d' ${expname} ${traj} ${block}`
+oceanname=`printf '%s_ocean.%04d.%04d' ${expname} ${traj} ${block}`
+lsgname=`printf '%s_lsg.%04d.%04d' ${expname} ${traj} ${block}`
+diagname=`printf '%s_diag.%04d.%04d' ${expname} ${traj} ${block}`
+restname=`printf '%s_rest.%04d.%04d' ${expname} ${traj} ${block}`
+
+case ${domain} in
+    PLA)
+	outputname=$dataname;;
+    OCE)
+	outputname=$oceaname;;
+    ICE)
+	outputname=$icename;;
+    LSG)
+	outputname=$lsgname;;
+    DIAG)
+	outputname=$diagname;;
+esac
+
+
+# define the folders and files where the burner and the namelist are.
+# this could be done also in the main script maybe, but in order to
+# be flexible it is easier to do it here, and not automize everything.
+burnerfolder='/home/zappa/work/PLASIM/PLASIM-master/scripts/'
+burnername='srv2nc'
+
+# define the folder where the burner and the namelist have been copied.
+# this is the same place where the stuff for the final postprocessing
+# will be copied, for simplicty. It could be a possibility to make
+# everything more automatic and create all this structure at the 
+# beginning of the main script, after testing how it works.
+# burnerexpfolder=`printf '%s/burner' ${expdir}`
+
+# define names of the postprocessed file and folder.
+postfiledir='ctrlobs'
+if [ $domain == DIAG ]; then
+    postfilename=`printf '%s_ctrlobs.%04d.%04d.txt' ${expname} ${traj} ${block}` 
+else
+    postfilename=`printf '%s_ctrlobs.%04d.%04d.nc' ${expname} ${traj} ${block}` 
+fi
+
+# define burner log file and folder name. This file should be deleted eventually.
+#burnlogdir='ctrlobs'
+#burnlogname=`printf '%s_burn_ctrlobs.%04d.%04d.log' ${expname} ${traj} ${block}`
+
+# extract the control observable. Here it is supposed that the observable
+# is in the standard output (i.e, not in the ocean or ice output).
+#### NOTA: algoritmo vuole media su lunghezza batch - se puoi estrarre solo questo, meglio! ####
+
+if [ $obsname == amoc ]; then
+    moc_tmp=moc_${expname}_${traj}_${block}.txt
+    grep "ATL max" ${diagexpdir}/${blockdir}/${outputname} | cut -c30-37 > ${moc_tmp}
+    awk '{ total += $1; count++ } END { print total/count }' ${moc_tmp} > ${postexpdir}/${postfiledir}/${postfilename}
+    rm ${moc_tmp}
+fi
+
+# no further processing is done on the files. At this stage it is 
+# easier to do it in a separate script. The files should be small
+# anyway, so parallelism should not be that necessary.

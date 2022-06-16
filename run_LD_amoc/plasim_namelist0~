@@ -1,0 +1,21 @@
+ &plasim_nl
+ NOUTPUT     =     1
+ NGUI        =     0
+ N_START_YEAR=     1
+ N_DAYS_PER_YEAR=  Lyear
+ N_RUN_YEARS =     0
+ N_RUN_MONTHS=     NMonths
+ N_RUN_DAYS  =     NDays
+ KICK        =     1
+ KICKRESTART =     kickres
+ MPSTEP      =     0
+ NAQUA       =     0
+ NDIAG       =     0
+ NGUIDBG     =     0
+ NQSPEC      =     1
+ NVEG        =     0
+ NWPD        =     1
+ NPRINT      =     0
+ NSYNC       =     1
+ SYNCSTR     =     0.0
+ /END

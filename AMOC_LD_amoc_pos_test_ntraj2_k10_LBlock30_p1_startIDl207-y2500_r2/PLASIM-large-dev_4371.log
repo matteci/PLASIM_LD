@@ -1,0 +1,83 @@
+nodes
+
+tasks
+2
+cpu-per-task
+
+mem-per-cpu
+4096
+mem
+
+/work/users/cini/PLASIM-LD/AMOC_LD_amoc_pos_test_ntraj2_k10_LBlock30_p1_startIDl207-y2500_r2
+2022-06-16 11:58:39 started creating folders
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/output'
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/restart'
+cp: cannot stat '/work/users/cini/PLASIM-LD/data/most_t42_lsmask.nc': No such file or directory
+cp: cannot stat '/work/users/cini/PLASIM-LD/data/most_t42_gparea.nc': No such file or directory
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/output'
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/restart'
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/output'
+cp: -r not specified; omitting directory '/work/users/cini/PLASIM-LD/plasim/run/restart'
+2022-06-16 11:58:40 finished creating folders
+2022-06-16 11:58:40 started running block 1
+2022-06-16 11:58:40 started running batch 1 of block 1
+2022-06-16 11:58:48 finished running batch 1 of block 1
+2022-06-16 11:58:48 started organizing output for batch 1 of block 1
+2022-06-16 11:58:48 finished organizing output for batch 1 of block 1
+2022-06-16 11:58:48 started extracting control observable for batch 1 of block 1
+2022-06-16 11:58:48 finished extracting control observable for batch 1 of block 1
+17.5555
+17.8474
+[2. 0.]
+ligh mode on
+cdo ensmean: Processed 2134080 values from 56 variables over 2 timesteps [0.14s 80MB]
+cdo ensmean: Processed 376832 values from 100 variables over 2 timesteps [0.09s 72MB]
+cdo ensmean: Processed 98304 values from 48 variables over 2 timesteps [0.04s 65MB]
+cdo ensmean: Processed 40960 values from 20 variables over 2 timesteps [0.02s 61MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 727776 values from 28 variables over 1 timestep
+cdo sellevel: Processed 98496 values from 8 variables [0.10s 67MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 57344 values from 50 variables over 1 timestep
+cdo sellevel: Processed 20480 values from 7 variables [0.04s 64MB]
+cdo selname: Processed 4096 values from 24 variables over 1 timestep [0.01s 60MB]
+cdo selname: Processed 4096 values from 10 variables over 1 timestep [0.01s 59MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 727776 values from 28 variables over 1 timestep
+cdo sellevel: Processed 98496 values from 8 variables [0.06s 65MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 57344 values from 50 variables over 1 timestep
+cdo sellevel: Processed 20480 values from 7 variables [0.03s 62MB]
+cdo selname: Processed 4096 values from 24 variables over 1 timestep [0.01s 60MB]
+cdo selname: Processed 4096 values from 10 variables over 1 timestep [0.01s 59MB]
+2022-06-16 11:58:52 started running block 2
+2022-06-16 11:58:52 started running batch 1 of block 2
+2022-06-16 11:59:00 finished running batch 1 of block 2
+2022-06-16 11:59:00 started organizing output for batch 1 of block 2
+2022-06-16 11:59:00 finished organizing output for batch 1 of block 2
+2022-06-16 11:59:00 started extracting control observable for batch 1 of block 2
+2022-06-16 11:59:01 finished extracting control observable for batch 1 of block 2
+19.1079
+18.986
+[0. 2.]
+ligh mode on
+cdo ensmean: Processed 2134080 values from 56 variables over 2 timesteps [0.14s 82MB]
+cdo ensmean: Processed 376832 values from 100 variables over 2 timesteps [0.11s 72MB]
+cdo ensmean: Processed 98304 values from 48 variables over 2 timesteps [0.05s 65MB]
+cdo ensmean: Processed 40960 values from 20 variables over 2 timesteps [0.02s 61MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 727776 values from 28 variables over 1 timestep
+cdo sellevel: Processed 98496 values from 8 variables [0.06s 65MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 57344 values from 50 variables over 1 timestep
+cdo sellevel: Processed 20480 values from 7 variables [0.03s 62MB]
+cdo selname: Processed 4096 values from 24 variables over 1 timestep [0.01s 60MB]
+cdo selname: Processed 4096 values from 10 variables over 1 timestep [0.01s 59MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 727776 values from 28 variables over 1 timestep
+cdo sellevel: Processed 98496 values from 8 variables [0.05s 65MB]
+cdo(2) selname: Process started
+cdo(2) selname: Processed 57344 values from 50 variables over 1 timestep
+cdo sellevel: Processed 20480 values from 7 variables [0.05s 62MB]
+cdo selname: Processed 4096 values from 24 variables over 1 timestep [0.01s 59MB]
+cdo selname: Processed 4096 values from 10 variables over 1 timestep [0.01s 61MB]

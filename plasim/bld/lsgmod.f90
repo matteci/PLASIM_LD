@@ -5032,9 +5032,9 @@
           end do
         end do
 !
-        do k=ken,1,-1
-          do j=3,jen-3
-            do i=1,ien
+        do k=ken,1,-1  ! depth
+          do j=3,jen-3 ! lat
+            do i=1,ien ! lon
               mom=monit(i,j)
               if (mom<1) cycle
               psimer(j,k,mom)=psimer(j,k,mom)+vtot(i,j,k)*delta(i,j,k)  &
