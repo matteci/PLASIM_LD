@@ -1,13 +1,13 @@
 #!/bin/sh
 #
 #SBATCH -J PLASIM-large-dev_%j
-#SBATCH --time=00:01:00
+#SBATCH --time=24:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks=2
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks=3
+#SBATCH --ntasks-per-node=3
 #SBATCH --output=PLASIM-large-dev_%j.log
 #SBATCH --error=PLASIM-large-dev_%j.log 
-#SBATCH --partition=debug
+#SBATCH --partition=batch
 
 ##### LOAD PYTHON VIRTUAL ENVIRONMENT WITH MODULES: numpy, math, netCDF4
 #source $HOME/my_venv/bin/activate
@@ -16,27 +16,30 @@
 
 #### NAMELIST ##############################################################
 nameThisFile='run_large_dev_LD'
-expname="AMOC_LD_VARNAME_pos_test"
+expname="AMOC_LD_VARNAME_pos"
 #
 # Parameters controlling length of experiment
 newexperiment=1     # 1: nuovo
-
+resty=2480
 initblock=1        # block è periodo lungo come resampling. 
-endblock=2         # ultimo blocco: ti definisce lunghezza integrazione
-force=1           # sovrascrittura delle cartelle di output
+endblock=20         # ultimo blocco: ti definisce lunghezza integrazione
+force=0           # sovrascrittura delle cartelle di output
 light=1           # light postprocessing as defined in postpro_light.sh
 
+#Parameters controlling climate mean state
+CO2=1400
+
 # Parameters controlling resampling, observable and weights
-varname='amoc'    # variabile usata per resampling
+varname='amoc'    #variabile usata per resampling
 domain='DIAG'     # domain in PLASIM output of varname
 
 resamplingname='resampling_Amoc.py'   # file che fa il resampling
-ntrajs=2
-k=10
-NMonths=1     # length resampling block
-NDays=0       # length resampling block
+ntrajs=3
+k=0
+NMonths=12     # length resampling block
+NDays=0      # length resampling block
 LYear=360     # 
-startID=l207-y2500_r2  # 0BCD (B: ocean state, C: atmospheric state, D: repeat)
+startID=l207-y${resty}_r2  # 0BCD (B: ocean state, C: atmospheric state, D: repeat)
 
 # Refine experiment name
 expname=${expname/VARNAME/${varname}}
@@ -55,11 +58,11 @@ debug=0
 #
 # Restart file info (if new experiment)
 sourcerestdir=/work/users/angeloni/PLASIM/plasim/exp/run-LSG_T21_nice1_av04513_354ppm/restart/
-plasimrestname=l207_REST.2500
-lsgrestname=l207_LSGREST.2500
+plasimrestname=l207_REST.${resty}
+lsgrestname=l207_LSGREST.${resty}
 #
 # run trajectory reconstruction from block 1 to endblock
-reconstructTrajs='n'
+reconstructTrajs='y'
 #
 # EXPERIMENT SPECIFIC FLAGS
 # Ocean Configuration
@@ -82,7 +85,7 @@ echo ${SLURM_MEM}
 # prepare plasim_namelist
 KR=1
 sed  -e "s/LYear/${LYear}/" -e "s/NMonths/${NMonths}/" -e "s/NDays/${NDays}/" -e "s/kickres/${KR}/" \
-     plasim_namelist0 > ${modeldir}/plasim_namelist 
+     plasim_namelist0 > ${modeldir}/plasim_namelist
 
 # prepare ocean namelist
 cp ${modeldir}/input_${diffusion} ${modeldir}/input
@@ -161,9 +164,11 @@ then
   cp ${scriptdir}/${organizename} ${scriptsexpdir}/${organizename}
   cp ${scriptdir}/${extractname} ${scriptsexpdir}/${extractname}
   cp ${scriptdir}/${resamplingname} ${scriptsexpdir}/${resamplingname}
-  cp ${modeldir}/* ${modelexpdir}/.
-  cp ${homedir}/data/${maskname} ${postexpdir}/utils/${maskname}     # mask
-  cp ${homedir}/data/${gpareaname} ${postexpdir}/utils/${gpareaname} # aree
+  find ${modeldir} -maxdepth 1 -type f | xargs -I {} cp {} ${modelexpdir}/.  #alternative way to copy only files arguments. If it doesen't work go back to previous line, the following
+  # cp ${modeldir}/* ${modelexpdir}/.
+  
+ # cp ${homedir}/data/${maskname} ${postexpdir}/utils/${maskname}     # mask
+ # cp ${homedir}/data/${gpareaname} ${postexpdir}/utils/${gpareaname} # aree
   # handle burner stuff
 #  cp ${burnerdir}/${burnername} ${burnerexpdir}/${burnername}
 #  cp ${namelistfolder}/${namelistname} ${burnerexpdir}/${namelistname}
@@ -173,7 +178,8 @@ then
   do
     runtrajdir=`printf 'run_%04d' ${traj}` 
     mkdir -p ${runexpdir}/${runtrajdir}
-    cp ${modeldir}/* ${runexpdir}/${runtrajdir}/.
+    find ${modeldir} -maxdepth 1 -type f | xargs -I {} cp {} ${runexpdir}/${runtrajdir}/. #alternative way to copy only files arguments. If it doesen't work go back to previous line, the following
+    #cp ${modeldir}/* ${runexpdir}/${runtrajdir}/.
     traj=`expr ${traj} + 1`
   done
 fi
@@ -366,6 +372,7 @@ mv ${scriptdir}/PLASIM-large-dev_${SLURM_JOB_ID}.log ${expdir}/. ## COPIA FILE L
 ## NOW SUBMIT NEW PROCESS TO RECONSTRUCT THE TRAJECTORIES
 
 if [ $reconstructTrajs == 'y' ]; then
+    echo "inside"
 
     SLURM_JOB_ID_PARENT=${SLURM_JOB_ID}
     cat << EOT > ${scriptdir}/PLASIM-large-dev-resample_${SLURM_JOB_ID_PARENT}.sh

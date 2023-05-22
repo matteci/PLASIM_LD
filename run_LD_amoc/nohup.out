@@ -1,0 +1,165 @@
+current star
+50
+Submitted batch job 5124
+current star
+60
+Submitted batch job 5130
+current star
+70
+Submitted batch job 5131
+current star
+80
+Submitted batch job 5133
+current star
+90
+Submitted batch job 5136
+current star
+100
+Submitted batch job 5137
+current star
+110
+Submitted batch job 5143
+end simuation
+current star
+2480
+Submitted batch job 5163
+current star
+2484
+Submitted batch job 5164
+current star
+2480
+Submitted batch job 5165
+./recursive_LD.sh: line 19: 27219 Killed                  sbatch --wait ./run_large_dev_LD_Singlerecorecursive.sh
+current star
+2484
+Submitted batch job 5166
+current star
+2480
+Submitted batch job 5167
+current star
+2480
+Submitted batch job 5168
+current star
+2480
+Submitted batch job 5169
+current star
+2484
+Submitted batch job 5170
+current star
+2486
+Submitted batch job 5172
+current star
+2488
+Submitted batch job 5174
+end simuation
+current star
+2482
+Submitted batch job 5178
+current star
+2490
+Submitted batch job 5180
+current star
+2492
+Submitted batch job 5181
+current star
+2494
+Submitted batch job 5183
+current star
+2496
+Submitted batch job 5184
+current star
+2498
+Submitted batch job 5186
+end simuation
+totrange: 18
+fy: 2480
+current star
+2480
+Submitted batch job 6807
+current star
+2489
+Submitted batch job 6811
+totrange: 16
+fy: 2482
+current star
+2482
+Submitted batch job 6844
+current star
+2484
+Submitted batch job 8452
+current star
+2486
+Submitted batch job 8458
+current star
+2488
+Submitted batch job 8459
+current star
+2490
+Submitted batch job 8461
+current star
+2492
+Submitted batch job 8463
+current star
+2494
+Submitted batch job 8466
+current star
+2496
+Submitted batch job 8469
+current star
+2498
+Submitted batch job 8481
+end simuation
+totrange: 
+fy: 
+current star
+0050
+Submitted batch job 8483
+current star
+0060
+Submitted batch job 8485
+current star
+0070
+Submitted batch job 8486
+current star
+0080
+Submitted batch job 8487
+current star
+0090
+Submitted batch job 8489
+current star
+0100
+Submitted batch job 8491
+current star
+0110
+Submitted batch job 8492
+end simuation
+totrange: 
+fy: 
+current star
+30
+Submitted batch job 24094
+current star
+40
+Submitted batch job 26233
+current star
+50
+Submitted batch job 28258
+current star
+60
+Submitted batch job 30314
+current star
+70
+Submitted batch job 32301
+current star
+80
+Submitted batch job 34546
+current star
+90
+Submitted batch job 36161
+current star
+100
+Submitted batch job 37686
+current star
+110
+Submitted batch job 39221
+end simuation

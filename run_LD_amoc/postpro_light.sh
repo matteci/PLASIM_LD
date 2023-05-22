@@ -16,7 +16,7 @@ ntrajnumber=`printf '%04d' ${ntraj}`
 rm ${expdir}/rest/${blocklabel}/*
 
 # subsample init files, keep 1 every 10 years
-if [ $(expr $block % 10) -eq 1 ]; then
+if [ $(expr $block % 10) -eq 0 ]; then
     tar -cf ${expdir}/init/${expname}_init_${blocklabel}.tar -C ${expdir}/init/${blocklabel} .
     rm ${expdir}/init/${blocklabel}/* 
 else

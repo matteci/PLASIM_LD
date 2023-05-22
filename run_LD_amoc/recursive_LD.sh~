@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+
+
+#iy=2498
+#stepy=2
+#nstep=8
+arr=("0030" "0040" "0050" "0060" "0070" "0080" "0090" "0100" "0110" )
+
+#totrange=$(($stepy*$nstep))
+#fy=$((${iy}-${totrange}))
+
+echo "totrange: $totrange"
+
+echo "fy: ${fy}"
+
+
+#for yy in $(seq -w ${fy} ${stepy} ${iy}); do
+for yy in "${arr[@]}"; do      
+    echo "current star"
+    echo ${yy}
+    sed -i "s/startedyear=.*/startedyear=${yy}/" run_large_dev_LD_Singlerecorecursive.sh 
+    sbatch --wait ./run_large_dev_LD_Singlerecorecursive.sh
+    wait
+    
+    
+   
+
+done
+
+echo "end simuation"
+exit 0
+   
+      
