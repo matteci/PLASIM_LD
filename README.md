@@ -1,8 +1,8 @@
-[![DOI](https://zenodo.org/badge/101884206.svg)](https://zenodo.org/badge/latestdoi/101884206)
+
 
 PLASIM
 ======
-
+Please, read [![DOI](https://zenodo.org/badge/101884206.svg)](https://zenodo.org/badge/latestdoi/101884206)
 *General Circulation Models Planet Simulator (PlaSim)*
 (Streamlined fork of https://github.com/HartmutBorth/PLASIM)
 
@@ -25,3 +25,5 @@ plasim/doc for the Planet Simulator
 Then have a look at the README file for configuration and setup.
 
 # PLASIM-LD
+No improvements in the model with respect to  [![DOI](https://zenodo.org/badge/101884206.svg)](https://zenodo.org/badge/latestdoi/101884206).
+Here, under run_LD_amoc are provided all the script needed to run a rare event simulation for the AMOC on PLASIM-LSG
